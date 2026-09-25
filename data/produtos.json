@@ -10,5 +10,11 @@
     "nome": "Feijão 1kg",
     "preco": 8.5,
     "quantidade": 60
+  },
+  {
+    "id": 3,
+    "nome": "Óleo de Soja 900ml",
+    "preco": 7.99,
+    "quantidade": 50
   }
 ]
