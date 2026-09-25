@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nome": "Arroz 5kg",
+    "preco": 24.9,
+    "quantidade": 40
+  },
+  {
+    "id": 2,
+    "nome": "Feijão 1kg",
+    "preco": 8.5,
+    "quantidade": 60
+  }
+]
