@@ -55,6 +55,97 @@ app.post('/produtos', (req, res) => {
   res.status(201).json({sucesso: "Produto cadastrado com sucesso!"});
 });
 
+// cria a rota que exibe todos os produtos
+app.get('/produtos', (req, res) => {
+  
+  // le os produtos já gravados no JSON
+  let produtos = lerProdutos();
+
+  // retorna os produtos do JSON
+  res.json(produtos);
+});
+
+// cria a rota que exibe um produto específico
+app.get('/produtos/:id', (req, res) => {
+
+  // le os produtos já gravados no JSON
+  let produtos = lerProdutos();
+  
+  // recupera o id do produto
+  let id = Number(req.params.id);
+
+  // le os produtos já gravados no JSON
+  let produto = produtos.find((item) => item.id == id);
+
+  // verifica se não existe produto com o id solicitado
+  if (!produto) {
+    res.status(404).json({erro: "Produto não encontrado!"});
+    return;
+  }
+
+  // retorna o produto com o id especificado
+  res.json(produto);
+});
+
+// cria a rota que atualiza um produto
+app.put('/produtos/:id', (req, res) => {
+  
+  // le os produtos já gravados no JSON
+  let produtos = lerProdutos();
+
+  // recupera o id do produto
+  let id = Number(req.params.id);
+
+  // procura na lista de produtos se o indice do que sera alterado.
+  let indice = produtos.findIndex((item) => item.id ==+ id);
+
+  // verifica se o produto foi encontrado
+  if (indice == -1) {
+    return res.status(404).json({erro: "Produto não encontrado!"});
+  }
+
+  // pega os novos dados enviados na requisição
+  let { nome, preco, quantidade } = req.body;
+
+  // atualiza os dados do produto
+  produtos[indice] = {
+    id,
+    nome: nome ?? produtos[indice].nome,
+    preco: preco ?? produtos[indice].preco,
+    quantidade: quantidade ?? produtos[indice].quantidade
+  };
+
+  // grava os dados atualizaods na lista de produtos
+  gravarProdutos(produtos);
+
+  // retorna o produto atualizado
+  res.json(produtos[indice]);
+});
+
+// cria a rota que exclui um produto
+app.delete('/produtos/:id', (req, res) => {
+  
+  // le os produtos já gravados no JSON
+  let produtos = lerProdutos();
+
+  // recupera o id do produto
+  let id = Number(req.params.id);
+
+  // procura na lista de produtos se o indice do que sera alterado.
+  let indice = produtos.findIndex((item) => item.id === id);
+
+  // verifica se o produto foi encontrado
+  if (indice === -1) {
+    return res.status(404).json({erro: "Produto não encontrado!"});
+  }
+
+  //remove o produto da lsita de produtos
+  let [produtoRemovido] = produtos.splice(indice, 1);
+
+  // retorna o produto excluido
+  res.status(201).json({ Sucesso: "Produto excluido com sucesso!" });
+});
+
 // coloca o servidor da web no ar
 app.listen(porta, () => {
   console.log(`Servidor web do Supermercado iniciado em http://localhost:${porta}`);

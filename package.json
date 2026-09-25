@@ -8,9 +8,17 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desenvolvedorback/08_supermercado.git"
+  },
+  "bugs": {
+    "url": "https://github.com/desenvolvedorback/08_supermercado/issues"
+  },
+  "homepage": "https://github.com/desenvolvedorback/08_supermercado#readme"
 }
