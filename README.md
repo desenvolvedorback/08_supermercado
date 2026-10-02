@@ -41,8 +41,8 @@ Este projeto permite realizar as operações básicas de **CRUD** (Create, Read,
 
 1. **Clone o repositório ou baixe os arquivos do projeto:**
    ```bash
-   git clone https://github.com/seu-usuario/supermercado-api.git
-   cd supermercado-api
+   git clone https://github.com/desenvolvedorback/08_supermercado.git
+   cd 08_supermercado
    ```
 
 2. **Instale as dependências:**
